@@ -1,4 +1,4 @@
-(ns smack-hobbit.core
+(ns smack-hobbit
   (:gen-class)
   (:require [clojure.string :as string]))
 

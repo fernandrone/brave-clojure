@@ -1,4 +1,5 @@
-(ns dec-maker.core)
+(ns dec-maker.core
+  (:gen-class))
 
 (defn dec-maker
   "Create a custom decrementor"
