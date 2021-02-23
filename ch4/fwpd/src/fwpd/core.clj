@@ -28,6 +28,25 @@
     (clojure.string/split s #"\n")
     (map #(clojure.string/split % #",") s)))
 
+(defn validate-key
+  [validator record key]
+  ((get validator key) (get record key)))
+
+;; (defn validate
+;;   [validator record]
+;;   (and (validate-key validator record :name)
+;;        (validate-key validator record :glitter-index)))
+
+(defn validate
+  [validator record]
+  (every? true? (map #(validate-key validator record %) (keys validator))))
+
+(defn append
+  [suspects suspect]
+  (if (validate {:name string? :glitter-index integer?} suspect)
+    (conj suspects suspect)
+    suspects))
+
 (defn mapify
   "Return a seq of maps like {:name \"Edward Cullen\" :glitter-index 10}"
   [rows]
