@@ -51,3 +51,10 @@
 (defn -main
   []
   (better-symmetrize-body-parts asym-alien-body-parts))
+
+(defn solution [num lst]
+  (println (clojure.string/join "\n"
+                                (reduce (fn [new-list x]
+                                          (into new-list (repeat num (x)))
+                                          '())
+                                        lst))))
